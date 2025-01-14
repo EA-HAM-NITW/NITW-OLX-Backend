@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Item {
 
     @Id
-    private int id;
+    private String id;
     private String title;
     private String desc;
     private String category;
@@ -15,6 +15,7 @@ public class Item {
     private Boolean isAvailableForRent;
     private int pricePerDay;
     //an object for seller
+    private String userUid;
     private String status;
     private String roomNumber;
     private String Hostel;
@@ -23,7 +24,7 @@ public class Item {
 
     // Getters for the fields
 
-    public int getId() {
+    public String getId(){
         return id;
     }
 
@@ -51,6 +52,10 @@ public class Item {
         return pricePerDay;
     }
 
+    public String getUserUid(){
+        return userUid;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -65,6 +70,17 @@ public class Item {
 
     public String getLocation() {
         return location;
+    }
+
+    public String toString() {
+        return "Item{" +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", isAvailableForRent=" + isAvailableForRent +
+                ", pricePerDay=" + pricePerDay +
+                ", userUid='" + userUid + '\'' +
+                '}';
     }
 }
 

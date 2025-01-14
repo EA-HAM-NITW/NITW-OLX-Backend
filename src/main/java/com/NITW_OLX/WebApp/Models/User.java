@@ -1,6 +1,9 @@
 package com.NITW_OLX.WebApp.Models;
 
-import org.springframework.data.mongodb.core.index.Indexed;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Document(collection = "Users")
 public class User {
     @JsonProperty("uid")
-    @Indexed(unique = true)
+    @Id
     private String uid;
     @JsonProperty("displayName")
     private String name;
     @JsonProperty("email")
     private String mail;
-    @JsonProperty("photoURL")
+    
     private String phone;
+    @JsonProperty("photoURL")
     private String photoUrl;
     //array for listed items
+    private List<String> items; 
     //array for reviews
     //array for items bought
 
@@ -69,5 +74,18 @@ public class User {
     // Setter for Photo URL
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    //Getter for items
+    public List<String> getItems(){
+        return items;
+    }
+
+    //Setter for items
+    public void setItems(String item){
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        items.add(item);
     }
 }
